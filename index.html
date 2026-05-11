@@ -92,14 +92,14 @@
         } else {
             title.innerText = "IYY... BU MALI MI SEÇTİN?";
             title.style.color = "#ff0000";
-            
-            if(member === 'zoktay') {
-                title.innerText = "IYY... BU MALI MI SEÇTİN? (ZOKTAY!)";
-                text.innerText = "Zoktay... Iyy! Cidden seçe seçe bu malı mı seçtin?";
-                media.innerHTML = `<video class="result-media" controls autoplay>
-                    <source src="video.mp4" type="video/mp4">
-                    Tarayıcınız video oynatmayı desteklemiyor.
-                </video>`;
+          if(member === 'zoktay') {
+            title.innerText = "IYY... BU MALI MI SEÇTİN? (ZOKTAY!)";
+            text.innerText = "Zoktay... Iyy! Cidden seçe seçe bu malı mı seçtin?";
+            media.innerHTML = `<video class="result-media" controls autoplay muted playsinline>
+                <source src="video.mp4" type="video/mp4">
+                Tarayıcınız video oynatmayı desteklemiyor.
+            </video>`;
+        }
             } else {
                 text.innerText = "Cidden seçe seçe bu malı mı seçtin, gerçekten pes!";
                 let driveId = "";
