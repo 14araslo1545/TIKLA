@@ -14,7 +14,6 @@
         .hidden { display: none; }
         .result-media { width: 100%; border-radius: 15px; margin-top: 20px; border: 2px solid #fff; }
         #final-text { font-size: 20px; margin-top: 15px; color: #f1c40f; font-weight: bold; }
-        #res-title { font-size: 24px; color: #ff0000; font-weight: bolder; }
     </style>
 </head>
 <body>
@@ -88,39 +87,28 @@
         if (member === 'sueda') {
             title.innerText = "Tebrikler, Ruh Eşin Sueda!";
             title.style.color = "#00d2ff";
+            text.innerText = "Sueda'yı seçtin! Harika bir zevk.";
+            media.innerHTML = `<img src="https://drive.google.com/thumbnail?id=1KKw3pKKjWTEv7SWZaufXLvC5R2_PA-OD&sz=w1000" class="result-media">`;
         } else {
             title.innerText = "IYY... BU MALI MI SEÇTİN?";
             title.style.color = "#ff0000";
-        }
-
-        if(member === 'mina') {
-            text.innerText = "Mina'yı seçe seçe bu malı mı seçtin, gerçekten pes!";
-            media.innerHTML = `<img src="https://drive.google.com/thumbnail?id=1OPxkJ_MHNNmNbBVio0D4wpvVGp1yRPfk&sz=w1000" class="result-media">`;
-        } 
-        else if(member === 'esin') {
-            text.innerText = "Esin mi? Cidden bu malı mı seçtin, inanamıyorum.";
-            media.innerHTML = `<img src="https://drive.google.com/thumbnail?id=1teqpGwmDy1laJ4TTk1An_TW4PBR7L1vv&sz=w1000" class="result-media">`;
-        } 
-        else if(member === 'zoktay') {
-            title.innerText = "IYY... BU MALI MI SEÇTİN? (ZOKTAY!)";
-            text.innerText = "Zoktay... Iyy! Cidden seçe seçe bu malı mı seçtin?";
-            // DİKKAT: GitHub'a yüklediğin videonun adı tam olarak video.mp4 olmalı!
-            media.innerHTML = `<video class="result-media" controls autoplay>
-                <source src="video.mp4" type="video/mp4">
-                Tarayıcınız video oynatmayı desteklemiyor.
-            </video>`;
-        }
-        else if(member === 'lidya') {
-            text.innerText = "Lidya hayranı... Cidden bu malı mı seçtin, vizyonsuz!";
-            media.innerHTML = `<img src="https://drive.google.com/thumbnail?id=1lH3SYKhoRT-ZQ7MRT7gMiIrMzOmRJhxP&sz=w1000" class="result-media">`;
-        }
-        else if(member === 'hilal') {
-            text.innerText = "Hilal fanı olmak... Seçe seçe bu malı mı seçtin, pes yani!";
-            media.innerHTML = `<img src="https://drive.google.com/thumbnail?id=1P-LjNOIXAkv1s0MSd12t7S_xORDRvsGR&sz=w1000" class="result-media">`;
-        }
-        else if(member === 'sueda') {
-            text.innerText = "Sueda'yı seçtin! Harika bir zevk, Manifest'in en iyisi.";
-            media.innerHTML = `<img src="https://drive.google.com/thumbnail?id=1KKw3pKKjWTEv7SWZaufXLvC5R2_PA-OD&sz=w1000" class="result-media">`;
+            
+            if(member === 'zoktay') {
+                title.innerText = "IYY... BU MALI MI SEÇTİN? (ZOKTAY!)";
+                text.innerText = "Zoktay... Iyy! Cidden seçe seçe bu malı mı seçtin?";
+                media.innerHTML = `<video class="result-media" controls autoplay>
+                    <source src="video.mp4" type="video/mp4">
+                    Tarayıcınız video oynatmayı desteklemiyor.
+                </video>`;
+            } else {
+                text.innerText = "Cidden seçe seçe bu malı mı seçtin, gerçekten pes!";
+                let driveId = "";
+                if(member === 'mina') driveId = "1OPxkJ_MHNNmNbBVio0D4wpvVGp1yRPfk";
+                else if(member === 'esin') driveId = "1teqpGwmDy1laJ4TTk1An_TW4PBR7L1vv";
+                else if(member === 'lidya') driveId = "1lH3SYKhoRT-ZQ7MRT7gMiIrMzOmRJhxP";
+                else if(member === 'hilal') driveId = "1P-LjNOIXAkv1s0MSd12t7S_xORDRvsGR";
+                media.innerHTML = `<img src="https://drive.google.com/thumbnail?id=${driveId}&sz=w1000" class="result-media">`;
+            }
         }
     }
 </script>
