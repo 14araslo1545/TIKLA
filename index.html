@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manifest Özel Fan Testi</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #0b0b0b; color: #fff; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .quiz-container { background: #1a1a1a; padding: 30px; border-radius: 20px; border: 2px solid #00d2ff; text-align: center; width: 90%; max-width: 450px; box-shadow: 0 0 20px rgba(0, 210, 255, 0.3); }
+        h2 { color: #00d2ff; margin-bottom: 20px; }
+        .options { display: grid; gap: 10px; }
+        button { background: #333; color: #fff; border: 1px solid #444; padding: 15px; border-radius: 10px; cursor: pointer; font-size: 16px; transition: 0.3s; }
+        button:hover { background: #00d2ff; color: #000; font-weight: bold; transform: translateY(-2px); }
+        .hidden { display: none; }
+        .result-media { width: 100%; border-radius: 15px; margin-top: 20px; border: 2px solid #fff; }
+        #final-text { font-size: 20px; margin-top: 15px; color: #f1c40f; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <!-- 1. SORU -->
+    <div id="q1">
+        <h2>Soru 1</h2>
+        <p>Manifest'in 1. yıla özel şarkısı hangisidir?</p>
+        <div class="options">
+            <button onclick="checkAnswer(1, 'A')">A) BAŞROL SENSİN</button>
+            <button onclick="checkAnswer(1, 'B')">B) ZEHİR</button>
+            <button onclick="checkAnswer(1, 'C')">C) HAYIR</button>
+        </div>
+    </div>
+
+    <!-- 2. SORU -->
+    <div id="q2" class="hidden">
+        <h2>Soru 2</h2>
+        <p>Manifest kaç üyeden oluşur?</p>
+        <div class="options">
+            <button onclick="checkAnswer(2, 'A')">A) 3</button>
+            <button onclick="checkAnswer(2, 'B')">B) 5</button>
+            <button onclick="checkAnswer(2, 'C')">C) 6</button>
+        </div>
+    </div>
+
+    <!-- 3. SORU -->
+    <div id="q3" class="hidden">
+        <h2>Soru 3</h2>
+        <p>Manifest'in mavi saçlı üyesi kimdir?</p>
+        <div class="options">
+            <button onclick="checkAnswer(3, 'A')">A) MİNA</button>
+            <button onclick="checkAnswer(3, 'B')">B) ESİN</button>
+            <button onclick="checkAnswer(3, 'C')">C) ZOKTAY</button>
+        </div>
+    </div>
+
+    <!-- 4. SORU (FİNAL) -->
+    <div id="q4" class="hidden">
+        <h2>Final Sorusu</h2>
+        <p>En çok hangi üyeyi seviyorsun?</p>
+        <div class="options">
+            <button onclick="showFinal('mina')">MİNA</button>
+            <button onclick="showFinal('esin')">ESİN</button>
+            <button onclick="showFinal('zoktay')">ZOKTAY</button>
+            <button onclick="showFinal('lidya')">LİDYA</button>
+            <button onclick="showFinal('hilal')">HİLAL</button>
+            <button onclick="showFinal('sueda')">SUEDA</button>
+        </div>
+    </div>
+
+    <!-- SONUÇ EKRANI -->
+    <div id="result" class="hidden">
+        <h2 id="res-title">Sonuç Hazırlanıyor...</h2>
+        <div id="media-content"></div>
+        <p id="final-text"></p>
+        <button onclick="location.reload()" style="margin-top:20px; font-size:12px; background:#444;">Testi Yeniden Çöz</button>
+    </div>
+</div>
+
+<script>
+    function checkAnswer(questionNum, choice) {
+        // Yanlış cevap verilse de bir sonraki soruya geçiriyoruz (Trol amaçlı)
+        document.getElementById('q' + questionNum).classList.add('hidden');
+        document.getElementById('q' + (questionNum + 1)).classList.remove('hidden');
+    }
+
+    function showFinal(member) {
+        document.getElementById('q4').classList.add('hidden');
+        document.getElementById('result').classList.remove('hidden');
+        
+        const media = document.getElementById('media-content');
+        const text = document.getElementById('final-text');
+        const title = document.getElementById('res-title');
+
+        title.innerText = "İşte Senin Ruh Eşin!";
+
+        if(member === 'mina') {
+            text.innerText = "Mina'yı seçtin! Harika bir zevk.";
+            media.innerHTML = `<img src="https://drive.google.com/thumbnail?id=1OPxkJ_MHNNmNbBVio0D4wpvVGp1yRPfk&sz=w1000" class="result-media">`;
+        } 
+        else if(member === 'esin') {
+            text.innerText = "Esin fanı olduğun onaylandı!";
+            media.innerHTML = `<img src="https://drive.google.com/thumbnail?id=1teqpGwmDy1laJ4TTk1An_TW4PBR7L1vv&sz=w1000" class="result-media">`;
+        } 
+        else if(member === 'zoktay') {
+            title.innerText = "YAKALANDIN! ZOKTAY AŞIĞI!";
+            text.innerText = "Zoktay senin bu testi çözdüğünü biliyor... ;)";
+            // Zoktay video olduğu için iframe veya direct link kullanıyoruz
+            media.innerHTML = `<iframe src="https://drive.google.com/file/d/1Ya5menCeF4JUJd6LtQk2XzDvVrZcj0vq/preview" width="100%" height="300" class="result-media" frameborder="0" allow="autoplay"></iframe>`;
+        }
+        else if(member === 'lidya') {
+            text.innerText = "Lidya seni bekliyor!";
+            media.innerHTML = `<img src="https://drive.google.com/thumbnail?id=1lH3SYKhoRT-ZQ7MRT7gMiIrMzOmRJhxP&sz=w1000" class="result-media">`;
+        }
+        else if(member === 'hilal') {
+            text.innerText = "Hilal sevgisi başka bir şey!";
+            media.innerHTML = `<img src="https://drive.google.com/thumbnail?id=1P-LjNOIXAkv1s0MSd12t7S_xORDRvsGR&sz=w1000" class="result-media">`;
+        }
+        else if(member === 'sueda') {
+            text.innerText = "Sueda hayranı olduğun belliydi!";
+            media.innerHTML = `<img src="https://drive.google.com/thumbnail?id=1KKw3pKKjWTEv7SWZaufXLvC5R2_PA-OD&sz=w1000" class="result-media">`;
+        }
+    }
+</script>
+
+</body>
+</html>
